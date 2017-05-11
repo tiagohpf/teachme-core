@@ -3,9 +3,9 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>pt.ua.deti.tqs</groupId>
   <artifactId>teachme-server</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>teachme-server</name>
+  <name>teachme-server Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
@@ -15,4 +15,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <build>
+    <finalName>teachme-server</finalName>
+  </build>
 </project>
