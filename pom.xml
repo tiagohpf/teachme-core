@@ -5,7 +5,7 @@
   <artifactId>teachme-server</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>teachme-server Maven Webapp</name>
+  <name>tqs-g12-server</name>
   <url>http://maven.apache.org</url>
   <dependencies>
     <dependency>
