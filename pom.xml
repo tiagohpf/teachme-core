@@ -134,6 +134,11 @@
             <scope>provided</scope>
             <version>5.2.10.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>1.9.3</version>
+        </dependency>
     </dependencies>
 
     <build>
