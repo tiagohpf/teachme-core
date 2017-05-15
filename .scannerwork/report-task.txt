@@ -1,5 +1,5 @@
 projectKey=tqs
 serverUrl=http://localhost:9000
 dashboardUrl=http://localhost:9000/dashboard/index/tqs
-ceTaskId=AVwJNu3vLp0b-gHkyKeI
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVwJNu3vLp0b-gHkyKeI
+ceTaskId=AVwJ-YsYLp0b-gHkyKeN
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVwJ-YsYLp0b-gHkyKeN
