@@ -8,15 +8,13 @@
     <!-- Configuration to be used when the WidlFly remote profile is active -->
     <container qualifier="widlfly-remote" default="true">
         <configuration>
-            <property name="managementAddress">192.168.160.233</property>
+            <property name="managementAddress">127.0.0.1</property>
             <property name="managementPort">9990</property>
             <property name="username">admin</property>
             <property name="password">admin</property>
-            <property name="allowConnectingToRunningServer">true</property>
-            <property name="outputToConsole">true</property>
         </configuration>
         <protocol type="Servlet 3.0">
-            <property name="host">192.168.160.233</property>
+            <property name="host">127.0.0.1</property>
             <property name="port">8080</property>
         </protocol>
     </container>

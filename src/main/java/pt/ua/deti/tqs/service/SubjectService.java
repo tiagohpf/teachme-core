@@ -7,7 +7,6 @@ package pt.ua.deti.tqs.service;
 
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
@@ -22,7 +21,7 @@ import pt.ua.deti.tqs.entity.Subject;
  *
  * @author tony
  */
-@Stateless
+
 @Path("/subject")
 public class SubjectService {
 
@@ -36,8 +35,8 @@ public class SubjectService {
     }
     
     @POST
-    @Path("/create")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/")
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public String insertUser(
             @FormParam("name") String name,
@@ -50,7 +49,7 @@ public class SubjectService {
         subject.setPrice(price);
 
         int res;
-        res = subjectDao.createEntity(subject);
+        res = subjectDao.createSubject(subject);
         return String.valueOf(res);
     }
 

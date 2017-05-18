@@ -11,8 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -28,7 +28,6 @@ import pt.ua.deti.tqs.entity.User;
  *
  * @author tony
  */
-@Stateless
 @Path("/user")
 public class UserService {
 
@@ -40,38 +39,39 @@ public class UserService {
     public List<User> getAll() {
         return userDao.getAll();
     }
-
+    
     @GET
-    @Path("/filter/subject/name/{name}")
+    @Path("/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getBySubjectName(@PathParam("name") String name) {
-        return userDao.getUsersBySubject(name);
+    public User getById(@PathParam("id") int id) {
+        return userDao.find(id);
     }
-
-    @GET
-    @Path("/filter/user/{area}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<User> getByUserArea(@PathParam("area") String area) {
-        return userDao.getUserByArea(area);
+    
+    @DELETE
+    @Path("/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String delete(@PathParam("id") int id) {
+        return String.valueOf(userDao.removeUser(id));
     }
 
     @PUT
-    @Path("/{id}/subject")
+    @Path("/{id}")
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String setSubject(
+    public String edit(
             @PathParam("id") int id,
             @FormParam("subjectId") int subjectId) {
-
-        int res = userDao.setSubject(id, subjectId);
+        
+        int res = userDao.editUser(id, subjectId);
 	
         return String.valueOf(res);
     }
 
     @POST
-    @Path("/create")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/")
+    @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public String insertUser(
+    public String insert(
             @FormParam("name") String name,
             @FormParam("dateBirth") String dateBirth,
             @FormParam("email") String email,

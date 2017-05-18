@@ -1,5 +1,5 @@
-projectKey=tqs
-serverUrl=http://localhost:9000
-dashboardUrl=http://localhost:9000/dashboard/index/tqs
-ceTaskId=AVwJ-YsYLp0b-gHkyKeN
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AVwJ-YsYLp0b-gHkyKeN
+projectKey=pt.ua.deti.tqs:tqs-2017-g12-server
+serverUrl=http://deti-tqs-12.ua.pt:9000
+dashboardUrl=http://deti-tqs-12.ua.pt:9000/dashboard/index/pt.ua.deti.tqs:tqs-2017-g12-server
+ceTaskId=AVwSjYBSAW49MN4sCK4N
+ceTaskUrl=http://deti-tqs-12.ua.pt:9000/api/ce/task?id=AVwSjYBSAW49MN4sCK4N

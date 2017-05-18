@@ -6,6 +6,7 @@
 package pt.ua.deti.tqs.dao;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 
 import javax.ejb.Stateless;
@@ -16,8 +17,6 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
-import static org.hibernate.annotations.common.util.impl.LoggerFactory.logger;
 import pt.ua.deti.tqs.entity.Subject;
 import pt.ua.deti.tqs.service.AbstractFacade;
 
@@ -27,7 +26,9 @@ import pt.ua.deti.tqs.service.AbstractFacade;
  */
 @Stateless
 public class SubjectDao extends AbstractFacade<Subject> {
-
+    
+    private static final Logger LOGGER = Logger.getLogger(Class.class.getName());
+    
     @PersistenceContext(unitName = "tqsdatabase")
     private EntityManager em;
 
@@ -39,18 +40,33 @@ public class SubjectDao extends AbstractFacade<Subject> {
     protected EntityManager getEntityManager() {
         return em;
     }
+
+    /**
+     * Get list of all subjects
+     * @return List of Subject
+     */
     public List<Subject> getAll() {
         return super.findAll();
     }
 
-    public int createEntity(Subject subject) {
+    /**
+     * Create a subject 
+     * @param subject
+     * @return id of the new subject
+     */
+    public int createSubject(Subject subject) {
         super.create(subject);
         this.em.flush();
         return subject.getId();
     }
-    @Transactional
+
+    /**
+     * Get all subjects by property name
+     * @param name
+     * @return Subject if match was found, null if not
+     */
     public Subject getSubjectByName(String name) {
-        Subject subject = null;
+        Subject subject;
         try {
             CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
             CriteriaQuery<Subject> cq = cb.createQuery(Subject.class);
@@ -59,7 +75,8 @@ public class SubjectDao extends AbstractFacade<Subject> {
             Query query = getEntityManager().createQuery(cq);
             subject = (Subject) query.getSingleResult();
         } catch (NoResultException ex) {
-            logger(SubjectDao.class).info(ex);
+            subject = null;
+            LOGGER.info(String.valueOf(ex));
         }
         return subject;
     }
